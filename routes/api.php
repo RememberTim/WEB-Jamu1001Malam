@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\API\FoodController;
 use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\TransactionController;
