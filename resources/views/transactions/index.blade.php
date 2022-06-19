@@ -33,27 +33,28 @@
                                     <td>{{ $item->user->email}}</td>
                                     <td>{{ $item->user->telepon }}</td>
                                     <td>{{ $item->quantity  }}</td>   
-                                    <td>{{ $item->total }}</td>        
-                                    <td> {{ $item->status }}</td>            
-                                    {{-- <td>
-                                      @if ($item->transaction_status == 'MASUK')
+                                    <td>{{ $item->total }}</td>                   
+                                    <td>
+                                      @if ($item->status == 'ORDER')
                                         <span class="badge badge-info">
-                                        @elseif ($item->transaction_status == 'TERIMA')
+                                        @elseif ($item->status == 'PENDING')
                                         <span class="badge badge-warning">
-                                        @elseif ($item->transaction_status == 'SELESAI')
+                                        @elseif ($item->status == 'SUCCESS')
                                         <span class="badge badge-success">
-                                        @elseif ($item->transaction_status == 'BATAL')
+                                        @elseif ($item->status == 'CANCELLED')
                                         <span class="badge badge-danger">
+                                            @elseif ($item->status == 'DELIVERED')
+                                            <span class="badge badge-secondary">
                                         @else
                                         <span>
                                         @endif
-                                            {{ $item->transaction_status }}
+                                            {{ $item->status }}
                                         </span>
-                                    </td> --}}
+                                    </td>
                                  
                                     <td>
-                                    {{-- @if($item->transaction_status == 'MASUK')
-                                <a href="{{ route('transactions.status', $item->id) }}?status=TERIMA" class="btn btn-success btn-sm">
+                                    {{-- @if($item->status == 'ORDER')
+                                <a href="{{ route('transactions.status', $item->id) }}?status=SUCCESS" class="btn btn-success btn-sm">
                                             <i class="fa fa-check"></i>
                                         </a>
                                         @endif --}}
@@ -80,14 +81,15 @@
                                     <td colspan="6" class="text-center">Tidak ada data</td>
                                 </tr>
                                 @endforelse
-
                             </tbody>
                             </table>
+                            {{ $transaction->links() }}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+      
     </div>
 @endsection
 

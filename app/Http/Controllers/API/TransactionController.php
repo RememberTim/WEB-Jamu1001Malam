@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\API;
 
+use Exception;
+use Midtrans\Snap;
+use Midtrans\Config;
+use App\Models\Product;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Helpers\ResponseFormatter;
 use App\Http\Controllers\Controller;
-use App\Models\Transaction;
-use Exception;
 use Illuminate\Support\Facades\Auth;
-use Midtrans\Config;
-use Midtrans\Snap;
 
 class TransactionController extends Controller
 {
@@ -66,6 +67,8 @@ class TransactionController extends Controller
             'total' => 'required',
             'total_keuntungan' => 'required',
             'status' => 'required',
+
+         
         ]);
 
         $transaction = Transaction::create([
@@ -78,6 +81,12 @@ class TransactionController extends Controller
             'payment_url' =>'',
         ]);
 
+       $product = Product::find($request->product_id);
+         $product->stok -= $request->quantity;
+         $product->save();
+
+      
+        
         //Konfigurasi Midtrans
 
         Config::$serverKey = config('services.midtrans.serverKey');

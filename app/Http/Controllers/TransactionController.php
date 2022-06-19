@@ -12,7 +12,6 @@ class TransactionController extends Controller
     public function index()
     {
         $transaction = Transaction::with('product','user')->paginate(10);
-        // dd($transaction);
 
         return view('transactions.index', [
             'transaction' => $transaction
@@ -95,13 +94,16 @@ class TransactionController extends Controller
      * @param $status
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function changeStatus(Request $request, $id, $status)
+    public function setStatus(Request $request, $id)
     {
-        $transaction = Transaction::findOrFail($id);
+       $request->validate([
+            'status' => 'required|in:PENDING,SUCCESS,DELIVERED,ORDER,CANCELED',
+        ]);
 
-        $transaction->status = $status;
-        $transaction->save();
+        $item = Transaction::findOrFail($id);
+        $item->status = $request->status;
+        $item->save();
 
-        return redirect()->route('transactions.show', $id);
+        return redirect()->route('transactions.index');
     }
 }

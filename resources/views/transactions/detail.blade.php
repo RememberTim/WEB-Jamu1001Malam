@@ -50,7 +50,24 @@
         </td>
     </tr>
 </table>
-
+<div class="col-12">
+    @if($item->status == 'ORDER')
+    <a href="{{ route('transactions.status', $item->id) }}?status=DELIVERED" class="btn btn-secondary btn-block">
+                <i class="fa fa-check"></i> SET DELIVERED
+            </a>
+            @endif
+</div>
+   
+    {{-- <div class="col-4">
+    <a href="{{ route('transactions.status', $item->id) }}?status=FAILED" class="btn btn-danger btn-block">
+    <i class="fa fa-times"></i> Set Failed
+     </a>
+    </div>
+    <div class="col-4">
+    <a href="{{ route('transactions.status', $item->id) }}?status=PENDING" class="btn btn-warning btn-block">
+     <i class="fa fa-spinner"></i> Set Pending
+     </a>
+    </div> --}}
 
 {{-- <x-app-layout>
     <x-slot name="header">

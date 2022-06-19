@@ -31,8 +31,7 @@ Route::prefix('dashboard')
         Route::resource('users', UserController::class);
         Route::resource('product', ProductController::class);
 
-        Route::get('transactions/{id}/status/{status}', [TransactionController::class, 'changeStatus'])
-            ->name('transactions.changeStatus');
+        route::get('transactions{id}/set-status', 'App\Http\Controllers\TransactionController@setStatus')->name('transactions.status');
         Route::resource('transactions', TransactionController::class);
     });
 
