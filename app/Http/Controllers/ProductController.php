@@ -41,7 +41,7 @@ class ProductController extends Controller
     {
         $data = $request->all();
 
-        $data['picturePath'] = $request->file('picturePath')->store('assets/product', 'public');
+        $data['picturePath'] = $request->file('picturePath')->store('assets/products', 'public');
 
         product::create($data);
         return redirect()->route('product.index');

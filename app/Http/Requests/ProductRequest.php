@@ -25,13 +25,13 @@ class ProductRequest extends FormRequest
     {
         return [
             'nama' => 'required|max:255',
-            'picturePath' => 'required|image',
+            'picturePath' => 'image',
             'deskripsi' => 'required',
             'bahan' => 'required',
             'harga' => 'required|integer',
             'rating' => 'required|numeric',
             'tipe' => '',
-            'stok' => 'required|integer',
+            'stok' => '',
             'keuntungan' => 'required|integer'
 
         ];

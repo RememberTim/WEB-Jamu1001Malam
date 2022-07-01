@@ -66,13 +66,15 @@
         </div>
 
         <div class="form-group">
-            <label for="stok" class="form-control-label"> Stok</label>
-            <input type="number"
-                name="stok"
-                value= "{{ old('stok')}}"
-                class="form-control @error('stok') is-invalid @enderror"/>
-                @error('stok')<div class ="text-muted">{{ $message }}</div>   @enderror 
-        </div>
+            <label for="stok" class=" form-control-label">Stok Jamu</label>
+                <select name="stok" class="form-control">
+                    <option value="Tersedia">Tersedia</option>     
+                    <option value="Tidak Tersedia">Tidak Tersedia</option>                                 
+            </select>       
+            </div>
+
+        
+
         <div class="form-group">
             <label for="rating" class="form-control-label"> Rating</label>
             <input type="double"

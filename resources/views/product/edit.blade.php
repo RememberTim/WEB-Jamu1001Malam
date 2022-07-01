@@ -41,18 +41,22 @@
                 @error('tipe')<div class ="text-muted">{{ $message }}</div>   @enderror                                 
         </select>
    </div>
-        <div class="form-group">
-            <label for="deskripsi" class="form-control-label"> Deskripsi </label>
-            <textarea name="deskripsi" 
-            class="ckeditor form-control  @error('deskripsi') is-invalid @enderror">{{old('deskripsi') ? old('deskripsi') : $item->deskripsi}}</textarea>
-            @error('deskripsi')<div class ="text-muted">{{ $message }}</div>   @enderror 
-        </div>
-        <div class="form-group">
-            <label for="bahan" class="form-control-label"> Bahan </label>
-            <textarea name="bahan" 
-            class="ckeditor form-control  @error('bahan') is-invalid @enderror">{{old('bahan') ? old('bahan') : $item->bahan}}</textarea>
-            @error('bahan')<div class ="text-muted">{{ $message }}</div>   @enderror 
-        </div>
+   <div class="form-group">
+    <label for="deskripsi" class="form-control-label"> Deskripsi Jamu</label>
+    <input type="text"
+        name="deskripsi"
+        value= "{{ old('deskripsi') ? old('deskripsi') : $item->deskripsi }}"
+        class="form-control @error('deskripsi') is-invalid @enderror"/>
+    @error('deskripsi')<div class ="text-muted">{{ $message }}</div>   @enderror  
+</div>
+<div class="form-group">
+    <label for="bahan" class="form-control-label"> Bahan Jamu</label>
+    <input type="text"
+        name="bahan"
+        value= "{{ old('bahan') ? old('bahan') : $item->bahan }}"
+        class="form-control @error('bahan') is-invalid @enderror"/>
+    @error('bahan')<div class ="text-muted">{{ $message }}</div>   @enderror  
+</div>
         <div class="form-group">
             <label for="harga" class="form-control-label"> Harga </label>
             <input type="number"
@@ -72,13 +76,14 @@
         </div>
 
         <div class="form-group">
-            <label for="stok" class="form-control-label"> Stok </label>
-            <input type="number"
-                name="stok"
-                value= "{{ old('stok') ? old('stok') : $item->stok }}"
-                class="form-control @error('stok') is-invalid @enderror"/>
-                @error('stok')<div class ="text-muted">{{ $message }}</div>   @enderror 
-        </div>
+            <label for="stok" class=" form-control-label">Stok Jamu</label>
+                <select name="stok" class="form-control @error('stok') is-invalid @enderror">
+                    <option value="{{ old('stok') ? old('stok') : $item->stok }}">{{ old('stok') ? old('stok') : $item->stok }}</option>
+                    <option value="Tersedia">Tersedia</option>     
+                    <option value="Tidak Tersedia">Tidak Tersedia</option>
+                    @error('stok')<div class ="text-muted">{{ $message }}</div>   @enderror                                 
+            </select>
+       </div>
 
         <div class="form-group">
             <label for="rating" class="form-control-label"> Rating </label>

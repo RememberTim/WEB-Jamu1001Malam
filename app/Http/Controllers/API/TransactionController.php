@@ -81,9 +81,9 @@ class TransactionController extends Controller
             'payment_url' =>'',
         ]);
 
-       $product = Product::find($request->product_id);
-         $product->stok -= $request->quantity;
-         $product->save();
+    //    $product = Product::find($request->product_id);
+    //      $product->stok -= $request->quantity;
+    //      $product->save();
 
       
         
